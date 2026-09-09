@@ -1,0 +1,110 @@
+.journey-section {
+  position: relative;
+  z-index: 2;
+}
+
+.journey-header {
+  margin-bottom: 60px;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .journey-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.journey-card {
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Border Gradient Effect on Hover */
+.journey-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: var(--accent-gradient);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.journey-card:hover::before {
+  opacity: 1;
+}
+
+.card-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.journey-card:hover .card-icon-wrapper {
+  transform: scale(1.15) translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.journey-card:hover .step-icon.text-cyan {
+  filter: drop-shadow(0 0 10px var(--accent-secondary));
+}
+
+.journey-card:hover .step-icon.text-emerald {
+  filter: drop-shadow(0 0 10px var(--accent-primary));
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 24px;
+}
+
+.card-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.link-arrow {
+  transition: transform 0.3s ease;
+}
+
+.journey-card:hover .link-arrow {
+  transform: translateX(4px);
+}
